@@ -3,263 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding of Anis & Ghofran</title>
+    <title>Anis & Ghofran — Wedding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fdfbf7;
-            --text-main: #3a3a3a;
-            --accent: #c4a47c; /* Gold tone from your card */
-            --white: #ffffff;
+            --bg: #faf9f6;
+            --text: #2c2c2c;
+            --gold: #b2945e;
+            --soft-gray: #757575;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg);
+            color: var(--text);
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Artistic Background Elements */
-        .floral-bg {
+        /* Subtle Background Texture */
+        body::before {
+            content: "";
             position: fixed;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            opacity: 0.4;
             pointer-events: none;
             z-index: -1;
-            opacity: 0.15;
-            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
         }
 
-        /* Animation Classes */
+        /* Scroll Animation Utility */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease-out;
+            transform: translateY(20px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
+        /* Layout */
+        section {
+            padding: 100px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
         /* Hero Section */
-        header {
+        .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 20px;
+            border-bottom: 1px solid rgba(178, 148, 94, 0.2);
         }
 
-        .hero-date {
+        .hero span {
             text-transform: uppercase;
             letter-spacing: 5px;
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-bottom: 20px;
+            font-size: 0.75rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 10vw, 6rem);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        h1 i { font-weight: 400; color: var(--gold); }
+
+        .date-location {
+            margin-top: 2rem;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* Parents Style */
+        .parents-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .parents-grid h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
             font-weight: 400;
             margin-bottom: 10px;
         }
 
-        .ampersand {
-            color: var(--accent);
-            font-style: italic;
-        }
-
-        /* Parents Section */
-        .parents-section {
-            max-width: 900px;
-            margin: 0 auto 100px;
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .parents-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 600px) {
-            .parents-grid { grid-template-columns: 1fr; }
-        }
-
-        .family-label {
-            font-size: 0.7rem;
+        .label {
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 10px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: block;
         }
 
-        /* Timeline / Events */
-        .events-container {
-            max-width: 1100px;
-            margin: 0 auto 100px;
-            padding: 0 20px;
-        }
-
+        /* Event Cards */
         .event-card {
-            background: var(--white);
+            margin-bottom: 80px;
             padding: 40px;
-            margin-bottom: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid #f0f0f0;
             position: relative;
         }
 
-        .event-card.highlight {
-            border: 1px solid var(--accent);
-            background-color: #fffdf9;
+        .event-card::after {
+            content: "";
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.3;
         }
 
+        .event-card:last-child::after { display: none; }
+
         .event-date {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            margin-bottom: 5px;
         }
 
         .event-title {
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            margin-bottom: 15px;
+            letter-spacing: 3px;
+            font-weight: 400;
+            font-size: 1rem;
+            margin-bottom: 20px;
         }
 
-        .event-info {
-            color: #777;
-            font-size: 0.9rem;
+        .event-details {
+            font-weight: 300;
+            color: var(--soft-gray);
+            margin-bottom: 25px;
         }
 
-        /* RSVP Button */
-        .rsvp-section {
-            padding: 100px 20px;
-            text-align: center;
-            background-color: #f4f1ea;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 18px 45px;
-            background-color: var(--text-main);
-            color: white;
+        /* Map Buttons */
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
             text-decoration: none;
+            color: var(--text);
+            border: 1px solid var(--gold);
+            padding: 10px 25px;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 0.8rem;
-            transition: 0.3s;
-            margin-top: 30px;
-            border-radius: 2px;
+            transition: 0.4s ease;
+            background: transparent;
         }
 
-        .btn:hover {
-            background-color: var(--accent);
+        .map-btn:hover {
+            background: var(--gold);
+            color: white;
         }
 
+        /* Footer */
         footer {
-            padding: 40px;
+            padding: 100px 20px;
+            background-color: #f3f1ec;
             text-align: center;
-            font-size: 0.8rem;
-            color: #999;
+        }
+
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
             font-style: italic;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .parents-grid { grid-template-columns: 1fr; gap: 40px; }
+            h1 { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="floral-bg"></div>
-
-    <header>
-        <div class="reveal">
-            <p class="hero-date">July 27 • 28 • 29, 2026</p>
-            <h1>Anis <span class="ampersand">&</span> Ghofran</h1>
-            <p style="font-style: italic; margin-top: 20px;">We are getting married</p>
-        </div>
-    </header>
-
-    <section class="parents-section reveal">
-        <p style="max-width: 600px; margin: 0 auto; font-style: italic;">
-            "With great pleasure and honored by your presence, we invite you to share the joy of our children's wedding."
-        </p>
-        <div class="parents-grid">
-            <div>
-                <p class="family-label">Family of the Groom</p>
-                <p><strong>Mr. Abdelkader Abboud</strong><br>& Mrs. Souad Heroum</p>
-            </div>
-            <div>
-                <p class="family-label">Family of the Bride</p>
-                <p><strong>Mr. Ezzedine Zaatour</strong><br>& Mrs. Radhia Ben Mourad</p>
-            </div>
-        </div>
+    <section class="hero reveal active">
+        <span>Save the Date</span>
+        <h1>Anis <i>&</i> Ghofran</h1>
+        <div class="date-location">JULY 2026 • SOUSSE, TUNISIA</div>
     </section>
 
-    <div class="events-container">
+    <section class="reveal">
+        <span class="label">The Families</span>
+        <div class="parents-grid">
+            <div>
+                <h3>Mr. Abdelkader Abboud</h3>
+                <p>& Mrs. Souad Haroum</p>
+            </div>
+            <div>
+                <h3>Mr. Ezzedine Zaatour</h3>
+                <p>& Mrs. Radhia Ben Mrad</p>
+            </div>
+        </div>
+        <p style="margin-top: 60px; font-style: italic; font-family: 'Cormorant Garamond'; font-size: 1.4rem;">
+            Request the honor of your presence at the wedding of their children
+        </p>
+    </section>
+
+    <section class="reveal">
+        <span class="label">The Celebration</span>
+
         <!-- Event 1 -->
-        <div class="event-card reveal">
-            <p class="event-date">Monday, 27 July 2026</p>
+        <div class="event-card">
+            <p class="event-date">Monday, 27 July</p>
             <h2 class="event-title">Henna of the Bride</h2>
-            <p class="event-info">03:00 PM • Hall "LINA"<br>Msaken Road, Sousse</p>
+            <p class="event-details">03:00 PM<br>Hall "LYNA", Msaken Road</p>
+            <a href="https://www.google.com/maps/place/Salle+Des+Fetes+LYNA/@35.7489052,10.5895531,882m/data=!3m2!1e3!4b1!4m6!3m5!1s0x12fdf5a6ddf8db5d:0x57f5774756e64f31!8m2!3d35.7489052!4d10.5895531!16s%2Fg%2F11cs5smt2x" target="_blank" class="map-btn">View Location</a>
         </div>
 
         <!-- Event 2 -->
-        <div class="event-card reveal">
-            <p class="event-date">Tuesday, 28 July 2026</p>
+        <div class="event-card">
+            <p class="event-date">Tuesday, 28 July</p>
             <h2 class="event-title">Groom's Henna & Dinner</h2>
-            <p class="event-info">06:00 PM • Hall "ZINI FILM"<br>Kalaa Kebira Road, Sousse</p>
+            <p class="event-details">06:00 PM<br>Hall "ZINI FILM", Kalaa Kebira</p>
+            <a href="https://www.google.com/maps/place/Salle+Zini+Film/@35.8694906,10.5840933,881m/data=!3m2!1e3!4b1!4m6!3m5!1s0x12fd8a3a9f0b1885:0xf53ee841d39c42c3!8m2!3d35.8694863!4d10.5866682!16s%2Fg%2F1tft0gr5" target="_blank" class="map-btn">View Location</a>
         </div>
 
         <!-- Event 3 -->
-        <div class="event-card highlight reveal">
-            <p class="event-date">Wednesday, 29 July 2026</p>
-            <h2 class="event-title">Wedding Ceremony & Contract</h2>
-            <p class="event-info">03:00 PM • Hall "VERSAILLES"<br>Sousse</p>
+        <div class="event-card">
+            <p class="event-date">Wednesday, 29 July</p>
+            <h2 class="event-title">Wedding Ceremony</h2>
+            <p class="event-details">03:00 PM<br>Hall "VERSAILLES", Sousse</p>
+            <a href="https://www.google.com/maps/place/Salle+des+F%C3%AAtes+Versailles/@35.8541961,10.5997846,881m/data=!3m2!1e3!4b1!4m6!3m5!1s0x12fd8a6b8f81b209:0xaa63543d0573eee9!8m2!3d35.8541918!4d10.6023595!16s%2Fg%2F11fy56fxpr" target="_blank" class="map-btn">View Location</a>
         </div>
-    </div>
-
-    <section class="rsvp-section reveal">
-        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem;">Save the Date</h2>
-        <p>We look forward to celebrating with you!</p>
-        <a href="https://wa.me/YOURNUMBER" class="btn">Confirm Attendance</a>
     </section>
 
     <footer>
-        <p>“And we created you in pairs”</p>
-        <p style="margin-top: 10px;">July 2026 • Sousse, Tunisia</p>
+        <p class="quote">“And we created you in pairs”</p>
+        <p style="font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;">Anis & Ghofran • 2026</p>
     </footer>
 
     <script>
-        // Simple Scroll Reveal Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        // Smooth Reveal Animation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
-            }
-        }
+            });
+        }, observerOptions);
 
-        window.addEventListener("scroll", reveal);
-
-        // Run once on load to show hero
-        window.onload = reveal;
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
