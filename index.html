@@ -1,90 +1,265 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دعوة زفاف أنيس و غفران</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Wedding of Anis & Ghofran</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #fdfaf6; color: #4a4a4a; overflow-x: hidden; }
-        .arabic-script { font-family: 'Amiri', serif; }
-        .bg-floral { background-image: url('https://www.transparenttextures.com/patterns/cream-pixels.png'); }
-        .fade-in { animation: fadeIn 2s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        :root {
+            --bg-color: #fdfbf7;
+            --text-main: #3a3a3a;
+            --accent: #c4a47c; /* Gold tone from your card */
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Artistic Background Elements */
+        .floral-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.15;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-date {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .ampersand {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        /* Parents Section */
+        .parents-section {
+            max-width: 900px;
+            margin: 0 auto 100px;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .parents-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .parents-grid { grid-template-columns: 1fr; }
+        }
+
+        .family-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        /* Timeline / Events */
+        .events-container {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .event-card {
+            background: var(--white);
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        .event-card.highlight {
+            border: 1px solid var(--accent);
+            background-color: #fffdf9;
+        }
+
+        .event-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .event-title {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .event-info {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* RSVP Button */
+        .rsvp-section {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #f4f1ea;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background-color: var(--text-main);
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            margin-top: 30px;
+            border-radius: 2px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #999;
+            font-style: italic;
+        }
     </style>
 </head>
-<body class="bg-floral">
+<body>
 
-    <!-- Floral Header -->
-    <div class="flex justify-center pt-10">
-        <img src="https://img.freepik.com/free-vector/hand-painted-watercolor-floral-border_23-2148762512.jpg" class="w-full max-w-lg opacity-80" alt="decoration">
-    </div>
+    <div class="floral-bg"></div>
 
-    <div class="max-w-3xl mx-auto text-center px-6 py-10 fade-in">
-        <h2 class="arabic-script text-3xl mb-8">بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</h2>
-        
-        <p class="text-lg mb-10 leading-relaxed">بعد اهدائكم عاطر التحية وأزكى السلام نتشرف عائلتا</p>
+    <header>
+        <div class="reveal">
+            <p class="hero-date">July 27 • 28 • 29, 2026</p>
+            <h1>Anis <span class="ampersand">&</span> Ghofran</h1>
+            <p style="font-style: italic; margin-top: 20px;">We are getting married</p>
+        </div>
+    </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+    <section class="parents-section reveal">
+        <p style="max-width: 600px; margin: 0 auto; font-style: italic;">
+            "With great pleasure and honored by your presence, we invite you to share the joy of our children's wedding."
+        </p>
+        <div class="parents-grid">
             <div>
-                <h3 class="text-xl font-bold">السيد عزالدين زعنور</h3>
-                <p>وحرمه راضية بن مراد</p>
+                <p class="family-label">Family of the Groom</p>
+                <p><strong>Mr. Abdelkader Abboud</strong><br>& Mrs. Souad Heroum</p>
             </div>
             <div>
-                <h3 class="text-xl font-bold">السيد عبد القادر عبود</h3>
-                <p>وحرمه سعاد هروم</p>
+                <p class="family-label">Family of the Bride</p>
+                <p><strong>Mr. Ezzedine Zaatour</strong><br>& Mrs. Radhia Ben Mourad</p>
             </div>
         </div>
+    </section>
 
-        <p class="text-xl mb-6">بدعوتكم لحضور زفاف ابنيهما</p>
-
-        <!-- Names -->
-        <h1 class="arabic-script text-6xl md:text-8xl text-[#b08d57] my-10 font-bold">أنيس & غفران</h1>
-
-        <p class="text-lg italic mb-16">وذلك بمشيئة الله تعالى</p>
-
-        <!-- Program Section (Merged Timeline) -->
-        <h3 class="text-2xl font-bold mb-8 text-gray-500 underline decoration-[#b08d57] underline-offset-8">برنامج الأفراح</h3>
-        
-        <div class="space-y-6 text-right">
-            
-            <!-- Event 1: From New Image -->
-            <div class="bg-white p-6 rounded-lg shadow-sm border-r-8 border-[#d4a373] card-hover">
-                <h4 class="text-xl font-bold text-[#b08d57]">حنة العروسة</h4>
-                <p class="mt-2 font-semibold italic text-gray-700">يوم الاثنين 27 جويلية 2026</p>
-                <p class="text-md">على الساعة الثالثة بعد الزوال</p>
-                <p class="font-bold mt-1">بقاعة "LINA" - طريق مساكن سوسة</p>
-            </div>
-
-            <!-- Event 2: From First Image -->
-            <div class="bg-white p-6 rounded-lg shadow-sm border-r-8 border-[#b08d57] card-hover">
-                <h4 class="text-xl font-bold text-[#b08d57]">حنة العروس والعشاء</h4>
-                <p class="mt-2 font-semibold italic text-gray-700">يوم الثلاثاء 28 جويلية 2026</p>
-                <p class="text-md">على الساعة السادسة مساءً</p>
-                <p class="font-bold mt-1">بقاعة "ZINI FILM" - طريق القلعة الكبرى سوسة</p>
-            </div>
-
-            <!-- Event 3: Common in both -->
-            <div class="bg-white p-6 rounded-lg shadow-sm border-r-8 border-[#8b7355] card-hover">
-                <h4 class="text-xl font-bold text-[#b08d57]">الزفاف وعقد القران</h4>
-                <p class="mt-2 font-semibold italic text-gray-700">يوم الأربعاء 29 جويلية 2026</p>
-                <p class="text-md">على الساعة الثالثة بعد الزوال</p>
-                <p class="font-bold mt-1">بقاعة الأفراح "VERSAILLES"</p>
-            </div>
-
+    <div class="events-container">
+        <!-- Event 1 -->
+        <div class="event-card reveal">
+            <p class="event-date">Monday, 27 July 2026</p>
+            <h2 class="event-title">Henna of the Bride</h2>
+            <p class="event-info">03:00 PM • Hall "LINA"<br>Msaken Road, Sousse</p>
         </div>
 
-        <div class="mt-20 py-10">
-            <p class="arabic-script text-3xl italic text-[#b08d57]">ولكم العاقبة في الأفراح والمسرات</p>
+        <!-- Event 2 -->
+        <div class="event-card reveal">
+            <p class="event-date">Tuesday, 28 July 2026</p>
+            <h2 class="event-title">Groom's Henna & Dinner</h2>
+            <p class="event-info">06:00 PM • Hall "ZINI FILM"<br>Kalaa Kebira Road, Sousse</p>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="event-card highlight reveal">
+            <p class="event-date">Wednesday, 29 July 2026</p>
+            <h2 class="event-title">Wedding Ceremony & Contract</h2>
+            <p class="event-info">03:00 PM • Hall "VERSAILLES"<br>Sousse</p>
         </div>
     </div>
 
-    <!-- Floral Footer -->
-    <div class="flex justify-center pb-10 rotate-180">
-        <img src="https://img.freepik.com/free-vector/hand-painted-watercolor-floral-border_23-2148762512.jpg" class="w-full max-w-lg opacity-80" alt="decoration">
-    </div>
+    <section class="rsvp-section reveal">
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem;">Save the Date</h2>
+        <p>We look forward to celebrating with you!</p>
+        <a href="https://wa.me/YOURNUMBER" class="btn">Confirm Attendance</a>
+    </section>
 
+    <footer>
+        <p>“And we created you in pairs”</p>
+        <p style="margin-top: 10px;">July 2026 • Sousse, Tunisia</p>
+    </footer>
+
+    <script>
+        // Simple Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        // Run once on load to show hero
+        window.onload = reveal;
+    </script>
 </body>
 </html>
