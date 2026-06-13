@@ -6,7 +6,6 @@
     <title>دعوة زفاف — أنيس و غفران</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Artistic Arabic Fonts: Amiri (Classical) and Tajawal (Modern) -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -86,11 +85,11 @@
 
         .hero-date {
             font-size: 1.3rem;
-            font-weight: 300;
+            font-weight: 400;
             border-top: 1px solid rgba(178, 148, 94, 0.3);
             display: inline-block;
             padding-top: 1rem;
-            font-family: 'Amiri', serif;
+            font-family: 'Tajawal', sans-serif; /* Using Tajawal for cleaner Latin numbers */
         }
 
         /* Families */
@@ -132,6 +131,12 @@
             font-size: 2.8rem;
             color: var(--gold);
             margin-bottom: 0.5rem;
+        }
+
+        /* Span for Latin numbers within Arabic text */
+        .num {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 400;
         }
 
         .event-title {
@@ -192,7 +197,7 @@
     <section class="hero reveal">
         <span>يتشرف عائلاتنا بدعوتكم لحفل</span>
         <h1>أنيس <span class="and">&</span> غفران</h1>
-        <div class="hero-date">٢٨ • ٢٩ جويلية ٢٠٢٦</div>
+        <div class="hero-date">28 • 29 جويلية 2026</div>
     </section>
 
     <section class="families reveal">
@@ -217,7 +222,7 @@
 
         <!-- Event: 28 July -->
         <div class="event-card">
-            <p class="event-date">الثلاثاء، ٢٨ جويلية</p>
+            <p class="event-date">الثلاثاء، <span class="num">28</span> جويلية</p>
             <h2 class="event-title">حنة العريس والعشاء</h2>
             <p class="event-details">على الساعة السادسة مساءً<br>بقاعة "ZINI FILM"، طريق القلعة الكبرى</p>
             <a href="https://www.google.com/maps/place/Salle+Zini+Film/@35.8694863,10.5866682,17z" target="_blank" class="map-icon-link" title="الموقع على الخريطة">
@@ -227,7 +232,7 @@
 
         <!-- Event: 29 July -->
         <div class="event-card">
-            <p class="event-date">الأربعاء، ٢٩ جويلية</p>
+            <p class="event-date">الأربعاء، <span class="num">29</span> جويلية</p>
             <h2 class="event-title">الزفاف وعقد القران</h2>
             <p class="event-details">على الساعة الثالثة بعد الزوال<br>بقاعة الأفراح "VERSAILLES"، سوسة</p>
             <a href="https://www.google.com/maps/place/Salle+des+F%C3%AAtes+Versailles/@35.8541918,10.6023595,17z" target="_blank" class="map-icon-link" title="الموقع على الخريطة">
@@ -238,7 +243,7 @@
 
     <footer>
         <p class="quote">"وَخَلَقْنَاكُمْ أَزْوَاجًا"</p>
-        <p style="font-size: 0.9rem; letter-spacing: 1px; opacity: 0.6;">سوسة، تونس • ٢٠٢٦</p>
+        <p style="font-size: 0.9rem; letter-spacing: 1px; opacity: 0.6;">سوسة، تونس • 2026</p>
     </footer>
 
     <script>
