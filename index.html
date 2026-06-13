@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دعوة زفاف — أنيس و غفران</title>
+    <title>أنيس و غفران — دعوة زفاف ملكية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;700&family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #faf9f6;
+            --bg: #fdfbf7;
             --text: #2c2c2c;
             --gold: #b2945e;
-            --soft-gray: #8e8e8e;
+            --gold-light: #d4af37;
+            --soft-gray: #7d7d7d;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,21 +27,33 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Paper Texture Overlay */
+        /* Decorative Background */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
-            opacity: 0.4;
+            opacity: 0.5;
             pointer-events: none;
             z-index: 10;
         }
 
+        /* Artistic Floral Corners */
+        .ornament {
+            position: fixed;
+            width: 250px;
+            height: 250px;
+            z-index: 5;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .top-left { top: -50px; left: -50px; transform: rotate(180deg); }
+        .bottom-right { bottom: -50px; right: -50px; }
+
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(40px);
+            transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .reveal.active {
             opacity: 1;
@@ -48,207 +61,247 @@
         }
 
         section {
-            padding: 80px 24px;
-            max-width: 800px;
+            padding: 60px 24px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 20;
         }
 
-        /* Hero */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        /* Bismillah Calligraphy */
+        .bismillah {
+            margin-top: 40px;
+            width: 280px;
+            fill: var(--gold);
+            opacity: 0.8;
         }
 
-        .hero span {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
+        /* Quran Verse Section */
+        .quran-verse {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 1.2rem;
             color: var(--gold);
-            margin-bottom: 2rem;
-            display: block;
-            font-weight: 300;
+            margin: 40px 0;
+            line-height: 2.2;
+            padding: 0 20px;
+            font-style: italic;
         }
 
+        /* Hero Names */
         h1 {
             font-family: 'Amiri', serif;
-            font-size: clamp(3.5rem, 12vw, 6.5rem);
+            font-size: clamp(4rem, 15vw, 8rem);
             font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
+            line-height: 1;
+            background: linear-gradient(to right, #b2945e, #e5c07b, #b2945e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
         }
 
-        h1 span.and { font-weight: 400; color: var(--gold); font-family: 'Tajawal', sans-serif; font-size: 0.6em; margin: 0 15px; }
+        .and-symbol {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.4em;
+            vertical-align: middle;
+            margin: 0 10px;
+            background: none;
+            -webkit-text-fill-color: var(--gold);
+        }
 
         .hero-date {
-            font-size: 1.3rem;
-            font-weight: 400;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--text);
             border-top: 1px solid rgba(178, 148, 94, 0.3);
+            border-bottom: 1px solid rgba(178, 148, 94, 0.3);
             display: inline-block;
-            padding-top: 1rem;
-            font-family: 'Tajawal', sans-serif; /* Using Tajawal for cleaner Latin numbers */
+            padding: 10px 40px;
+            margin-top: 20px;
         }
 
-        /* Families */
-        .families {
-            border-top: 1px solid #eee;
-            margin-top: 40px;
-        }
-
+        /* Families Section */
         .parents-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            margin: 40px 0;
+            margin: 50px 0;
         }
 
         .parents-grid h3 {
             font-family: 'Amiri', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 5px;
+            font-size: 2.2rem;
+            color: var(--text);
+            margin-bottom: 10px;
         }
 
-        .label {
+        .label-gold {
+            text-transform: uppercase;
             font-size: 0.8rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: var(--gold);
             margin-bottom: 20px;
             display: block;
-            font-weight: 500;
         }
 
-        /* Events */
+        /* Event Cards - Minimalist Artistic */
         .event-card {
-            margin-bottom: 100px;
+            margin-bottom: 120px;
+            position: relative;
+        }
+
+        .event-card::before {
+            content: "";
+            position: absolute;
+            top: -20px; left: 50%;
+            transform: translateX(-50%);
+            width: 1px; height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
         }
 
         .event-date {
             font-family: 'Amiri', serif;
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Span for Latin numbers within Arabic text */
-        .num {
-            font-family: 'Tajawal', sans-serif;
-            font-weight: 400;
+            margin-bottom: 10px;
         }
 
         .event-title {
+            font-size: 1.4rem;
             font-weight: 500;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
         .event-details {
-            font-weight: 300;
-            font-size: 1.1rem;
             color: var(--soft-gray);
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            max-width: 400px;
+            margin: 0 auto 30px;
         }
 
-        /* Map Icon Link */
-        .map-icon-link {
-            display: inline-block;
-            width: 44px;
-            height: 44px;
-            transition: transform 0.3s ease;
-            color: var(--gold);
+        /* Wax Seal Map Button */
+        .wax-seal {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(178, 148, 94, 0.4);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 2px solid #fff;
+        }
+        .wax-seal:hover {
+            transform: rotate(15deg) scale(1.1);
+            background: #967d4f;
+        }
+        .wax-seal svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
         }
 
-        .map-icon-link:hover {
-            transform: scale(1.2);
-            color: var(--text);
-        }
-
-        .map-icon-link svg {
-            width: 100%;
-            height: 100%;
-            fill: currentColor;
-        }
-
-        /* Footer */
         footer {
             padding: 100px 24px;
-            text-align: center;
+            background: #f4f1ea;
         }
 
-        .quote {
+        .footer-quote {
             font-family: 'Amiri', serif;
-            font-size: 2.2rem;
-            font-style: italic;
+            font-size: 2.5rem;
             color: var(--gold);
-            margin-bottom: 30px;
         }
 
-        @media (max-width: 600px) {
+        .num { font-family: 'Tajawal', sans-serif; font-weight: 400; }
+
+        @media (max-width: 768px) {
             .parents-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 4rem; }
+            h1 { font-size: 4.5rem; }
+            .ornament { width: 150px; height: 150px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Ornamental Borders -->
+    <svg class="ornament top-left" viewBox="0 0 100 100"><path fill="var(--gold)" d="M0 0c50 0 100 50 100 100H90C90 50 50 10 0 10V0z"/><circle fill="var(--gold)" cx="5" cy="5" r="2"/></svg>
+    <svg class="ornament bottom-right" viewBox="0 0 100 100"><path fill="var(--gold)" d="M0 0c50 0 100 50 100 100H90C90 50 50 10 0 10V0z"/><circle fill="var(--gold)" cx="5" cy="5" r="2"/></svg>
+
     <section class="hero reveal">
-        <span>يتشرف عائلاتنا بدعوتكم لحفل</span>
-        <h1>أنيس <span class="and">&</span> غفران</h1>
-        <div class="hero-date">28 • 29 جويلية 2026</div>
+        <!-- Bismillah SVG Calligraphy -->
+        <svg class="bismillah" viewBox="0 0 300 100">
+            <path d="M150,20 Q160,10 170,20 T190,20 M140,40 Q150,30 160,40 T180,40 M130,60 Q140,50 150,60 T170,60" fill="none" stroke="currentColor" stroke-width="2"/>
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Amiri" font-size="35" fill="var(--gold)">بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</text>
+        </svg>
+
+        <p class="quran-verse">
+            "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ"
+        </p>
+
+        <span class="label-gold">بكل الحب والمودة نتشرف بدعوتكم</span>
+        <h1>أنيس <span class="and-symbol">&</span> غفران</h1>
+        
+        <div class="hero-date">
+            <span class="num">28</span> • <span class="num">29</span> جويلية <span class="num">2026</span>
+        </div>
     </section>
 
-    <section class="families reveal">
-        <span class="label">العائلات</span>
+    <section class="reveal">
+        <span class="label-gold">العائلات الكريمة</span>
         <div class="parents-grid">
             <div>
                 <h3>السيد عزالدين زعتور</h3>
-                <p>وحرمه راضية بن مراد</p>
+                <p>وحرمه المصونة راضية بن مراد</p>
             </div>
             <div>
                 <h3>السيد عبد القادر عبود</h3>
-                <p>وحرمه سعاد هروم</p>
+                <p>وحرمه المصونة سعاد هروم</p>
             </div>
         </div>
-        <p style="margin-top: 40px; font-family: 'Amiri'; font-size: 1.8rem; color: var(--soft-gray);">
-            يتشرفون بدعوتكم لمشاركتهم فرحة زفاف ابنيهما
+        <p style="font-family: 'Amiri'; font-size: 1.6rem; margin-top: 30px;">
+            يسعدنا حضوركم لتكتمل فرحتنا في ليلة العمر
         </p>
     </section>
 
     <section class="reveal">
-        <span class="label">البرنامج</span>
+        <span class="label-gold">مراسم الاحتفال</span>
 
-        <!-- Event: 28 July -->
+        <!-- Day 1 -->
         <div class="event-card">
             <p class="event-date">الثلاثاء، <span class="num">28</span> جويلية</p>
-            <h2 class="event-title">حنة العريس والعشاء</h2>
-            <p class="event-details">على الساعة السادسة مساءً<br>بقاعة "ZINI FILM"، طريق القلعة الكبرى</p>
-            <a href="https://www.google.com/maps/place/Salle+Zini+Film/@35.8694863,10.5866682,17z" target="_blank" class="map-icon-link" title="الموقع على الخريطة">
+            <h2 class="event-title">حنة العريس ومأدبة العشاء</h2>
+            <p class="event-details">بداية من الساعة <span class="num">06:00</span> مساءً<br>بقاعة "ZINI FILM"، طريق القلعة الكبرى</p>
+            <a href="https://www.google.com/maps/place/Salle+Zini+Film/@35.8694863,10.5866682,17z" target="_blank" class="wax-seal" title="موقع القاعة">
                 <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             </a>
         </div>
 
-        <!-- Event: 29 July -->
+        <!-- Day 2 -->
         <div class="event-card">
             <p class="event-date">الأربعاء، <span class="num">29</span> جويلية</p>
-            <h2 class="event-title">الزفاف وعقد القران</h2>
-            <p class="event-details">على الساعة الثالثة بعد الزوال<br>بقاعة الأفراح "VERSAILLES"، سوسة</p>
-            <a href="https://www.google.com/maps/place/Salle+des+F%C3%AAtes+Versailles/@35.8541918,10.6023595,17z" target="_blank" class="map-icon-link" title="الموقع على الخريطة">
+            <h2 class="event-title">حفل الزفاف وعقد القران</h2>
+            <p class="event-details">على الساعة <span class="num">03:00</span> بعد الزوال<br>بقاعة الأفراح الملكية "VERSAILLES"، سوسة</p>
+            <a href="https://www.google.com/maps/place/Salle+des+F%C3%AAtes+Versailles/@35.8541918,10.6023595,17z" target="_blank" class="wax-seal" title="موقع القاعة">
                 <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             </a>
         </div>
     </section>
 
-    <footer>
-        <p class="quote">"وَخَلَقْنَاكُمْ أَزْوَاجًا"</p>
+    <footer class="reveal">
+        <p class="footer-quote">"وَخَلَقْنَاكُمْ أَزْوَاجًا"</p>
+        <p style="margin-top: 20px; font-size: 0.8rem; letter-spacing: 2px; opacity: 0.6;">سوسة • تونس • <span class="num">2026</span></p>
     </footer>
 
     <script>
+        // Smooth Intersection Observer for artistic entry
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
         }, { threshold: 0.1 });
 
